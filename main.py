@@ -10,7 +10,7 @@ API_KEY = "b763bfe1e59fe50ddb8c76103b96437a"
 
 PARAM = {"api_key": API_KEY,
          "format": "json",
-         "limit ": "1"}
+         "limit": "5"}
 
 query = "Jo"
 

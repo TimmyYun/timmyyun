@@ -10,11 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+import dj_database_url
+import os
+from django.test.runner import DiscoverRunner
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+IS_HEROKU = "DYNO" in os.environ
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -22,10 +26,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-iv*$xi2o^@5)-r0@0)-gpv=asf0j1n*ktu^i&58tz)&w@bkh2*'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+if IS_HEROKU:
+    ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = []
+
+# SECURITY WARNING: don't run with debug turned on in production!
+if not IS_HEROKU:
+    DEBUG = True
 
 
 # Application definition
@@ -37,10 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api.apps.ApiConfig',
     'rest_framework',
 ]
 
 MIDDLEWARE = [
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -71,16 +82,45 @@ TEMPLATES = [
 WSGI_APPLICATION = 'timmyyun.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+#REST FRAMEWORK SETTINGS
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+REST_FRAMEWORK = {
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.AnonRateThrottle',
+        'rest_framework.throttling.UserRateThrottle'
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'anon': '1/day',
+        'user': '1/day'
     }
 }
 
+#CACHING
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'cache_table',
+    }
+}
+
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+MAX_CONN_AGE = 600
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dbf5530rer4nus',
+        'USER': 'lmwendgctpyyei',
+        'PASSWORD': '80c3dec5f1f1337c3b25cb8790dbb2814bfebde1886c48707aee1a6fecf8e0fb',
+        'HOST': 'ec2-54-174-31-7.compute-1.amazonaws.com',
+        'PORT': '5432',
+    }
+}
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -114,9 +154,30 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
+# https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_URL = "static/"
+
+# Enable WhiteNoise's GZip compression of static assets.
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Test Runner Config
+
+
+class HerokuDiscoverRunner(DiscoverRunner):
+    """Test Runner for Heroku CI, which provides a database for you.
+    This requires you to set the TEST database (done for you by settings().)"""
+
+    def setup_databases(self, **kwargs):
+        self.keepdb = True
+        return super(HerokuDiscoverRunner, self).setup_databases(**kwargs)
+
+
+# Use HerokuDiscoverRunner on Heroku CI
+if "CI" in os.environ:
+    TEST_RUNNER = "gettingstarted.settings.HerokuDiscoverRunner"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
