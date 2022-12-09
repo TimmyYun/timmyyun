@@ -1,22 +1,44 @@
 {
-    "results": {
-        "opensearch:Query": {
-            "#text": "",
-            "role": "request",
-            "searchTerms": "Jo",
-            "startPage": "1"
+    "artist": {
+        "name": "Joji",
+        "url": "https://www.last.fm/music/Joji",
+        "image": [
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "small"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/64s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "medium"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "large"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "extralarge"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": "mega"
+            },
+            {
+                "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                "size": ""
+            }
+        ],
+        "streamable": "0",
+        "ontour": "0",
+        "stats": {
+            "listeners": "1450433",
+            "playcount": "138931990"
         },
-        "opensearch:totalResults": "2832024",
-        "opensearch:startIndex": "0",
-        "opensearch:itemsPerPage": "5",
-        "artistmatches": {
+        "similar": {
             "artist": [
                 {
-                    "name": "Joji",
-                    "listeners": "1450433",
-                    "mbid": "",
-                    "url": "https://www.last.fm/music/Joji",
-                    "streamable": "0",
+                    "name": "Joji & BENEE",
+                    "url": "https://www.last.fm/music/Joji+&+BENEE",
                     "image": [
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
@@ -37,15 +59,16 @@
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
                             "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
                         }
                     ]
                 },
                 {
-                    "name": "John Mayer",
-                    "listeners": "2948302",
-                    "mbid": "8a81edd9-6f62-4ac7-afee-17dc0fec5fe7",
-                    "url": "https://www.last.fm/music/John+Mayer",
-                    "streamable": "0",
+                    "name": "88rising",
+                    "url": "https://www.last.fm/music/88rising",
                     "image": [
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
@@ -66,15 +89,16 @@
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
                             "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
                         }
                     ]
                 },
                 {
-                    "name": "Joy Division",
-                    "listeners": "2490633",
-                    "mbid": "9a58fda3-f4ed-4080-a3a5-f457aac9fcdd",
-                    "url": "https://www.last.fm/music/Joy+Division",
-                    "streamable": "0",
+                    "name": "rei brown",
+                    "url": "https://www.last.fm/music/rei+brown",
                     "image": [
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
@@ -95,15 +119,16 @@
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
                             "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
                         }
                     ]
                 },
                 {
-                    "name": "Johnny Cash",
-                    "listeners": "3231485",
-                    "mbid": "d43d12a1-2dc9-4257-a2fd-0a3bb1081b86",
-                    "url": "https://www.last.fm/music/Johnny+Cash",
-                    "streamable": "0",
+                    "name": "d4vd",
+                    "url": "https://www.last.fm/music/d4vd",
                     "image": [
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
@@ -124,15 +149,16 @@
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
                             "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
                         }
                     ]
                 },
                 {
-                    "name": "Elton John",
-                    "listeners": "3532725",
-                    "mbid": "b83bc61f-8451-4a5d-8b8e-7e9ed295e822",
-                    "url": "https://www.last.fm/music/Elton+John",
-                    "streamable": "0",
+                    "name": "Tyler, the Creator",
+                    "url": "https://www.last.fm/music/Tyler,+the+Creator",
                     "image": [
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/34s/2a96cbd8b46e442fc41c2b86b821562f.png",
@@ -153,13 +179,50 @@
                         {
                             "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
                             "size": "mega"
+                        },
+                        {
+                            "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png",
+                            "size": ""
                         }
                     ]
                 }
             ]
         },
-        "@attr": {
-            "for": "Jo"
+        "tags": {
+            "tag": [
+                {
+                    "name": "Lo-Fi",
+                    "url": "https://www.last.fm/tag/Lo-Fi"
+                },
+                {
+                    "name": "rnb",
+                    "url": "https://www.last.fm/tag/rnb"
+                },
+                {
+                    "name": "Hip-Hop",
+                    "url": "https://www.last.fm/tag/Hip-Hop"
+                },
+                {
+                    "name": "japanese",
+                    "url": "https://www.last.fm/tag/japanese"
+                },
+                {
+                    "name": "alternative rnb",
+                    "url": "https://www.last.fm/tag/alternative+rnb"
+                }       
+            ]
+        },
+        "bio": {
+            "links": {
+                "link": {
+                    "#text": "",
+                    "rel": "original",
+                    "href": "https://last.fm/music/Joji/+wiki"
+                }
+            },
+            "published": "04 Jul 2015, 13:40",
+            "summary": "George Miller, known by his stage name Joji, is a Japanese-Australian singer-songwriter, rapper, record producer, and former YouTube personality under his previous alias \"Filthy Frank\".\n\nIn 2013, on the DizastaMusic YouTube channel, Miller created the video \"Do the Harlem Shake (Original),\" which originated from a clip of the video \"Filthy Compilation #6 \u2013 Smell My Fingers\",the video has been viewed 60 million times (as of February 2019). The original clip led to the creation of the Harlem Shake meme <a href=\"https://www.last.fm/music/Joji\">Read more on Last.fm</a>",
+            "content": "George Miller, known by his stage name Joji, is a Japanese-Australian singer-songwriter, rapper, record producer, and former YouTube personality under his previous alias \"Filthy Frank\".\n\nIn 2013, on the DizastaMusic YouTube channel, Miller created the video \"Do the Harlem Shake (Original),\" which originated from a clip of the video \"Filthy Compilation #6 \u2013 Smell My Fingers\",the video has been viewed 60 million times (as of February 2019). The original clip led to the creation of the Harlem Shake meme, which was directly responsible for the debut of Baauer's \"Harlem Shake\" song atop the Billboard Hot 100. In addition to the DizastaMusic channel (inactive since 2015), he has operated two other channels: TooDamnFilthy (a secondary channel) and TVFilthyFrank (main channel).\n\nHis absurdist YouTube channel, now defunct, consisted of music, rants, ukulele performances, and a bizarre show, with all of the main characters played by Miller including the titular character of Filthy Frank. He also produced absurdist comedy music under the moniker Pink Guy, with his discography spanning two full-length albums and an EP.  His second album, Pink Season, debuted at number 70 on Billboard 200. \n\nIn late 2017, Miller retired from the YouTube channel to focus on his music career under the name Joji, producing more nuanced and serious music, releasing the EP In Tongues, which peaked at number 58 on the Billboard 200, and his debut studio album BALLADS 1, which reached number 1 on Billboard's top R&B and hip-hop chart in November 2018. With this, Miller became the first Asian artist to do so. Miller's music has been described as a mix between R&B and trip-hop. As of 2022, Joji has released two more studio albums: Nectar on September 25, 2020, and SMITHEREENS on November 4, 2022. <a href=\"https://www.last.fm/music/Joji\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply."
         }
     }
 }

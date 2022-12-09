@@ -62,6 +62,7 @@ def getArtists(request):
 
 
 @api_view(["GET", "PUT", "DELETE"])
+@throttle_classes([UserRateThrottle])
 def getArtist(request, pk):
     """
     Retrieve, update or delete an artist.
@@ -77,11 +78,11 @@ def getArtist(request, pk):
         data = requests.get(url=artist_search_url, params=PARAM).json()
         for subject in data["results"]["artistmatches"]["artist"]:
             information = {"name": subject["name"],
-                    "listeners": subject["listeners"],
-                    "mbid": subject["mbid"],
-                    "url": subject["url"],
-                    "streamable": subject["streamable"],
-                    "image_url": subject["image"][1]["#text"]}
+                           "listeners": subject["listeners"],
+                           "mbid": subject["mbid"],
+                           "url": subject["url"],
+                           "streamable": subject["streamable"],
+                           "image_url": subject["image"][1]["#text"]}
             serializer = ArtistSerializer(data=information)
             if serializer.is_valid():
                 serializer.save()
@@ -94,6 +95,9 @@ def getArtist(request, pk):
 
     if request.method == "GET":
         serializer = ArtistSerializer(artist, many=False)
+        breakpoint()
+        if serializer.data['description'] == '':
+            breakpoint()
         return Response(serializer.data)
 
     if request.method == "PUT":

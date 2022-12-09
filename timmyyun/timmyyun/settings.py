@@ -82,7 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'timmyyun.wsgi.application'
 
 
-#REST FRAMEWORK SETTINGS
+# REST FRAMEWORK SETTINGS
 
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': [
@@ -95,7 +95,7 @@ REST_FRAMEWORK = {
     }
 }
 
-#CACHING
+# CACHING
 
 CACHES = {
     'default': {

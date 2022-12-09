@@ -6,17 +6,15 @@ URL = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=b763bfe1e5
 album_search_url = "http://ws.audioscrobbler.com/2.0/?method=album.search&album=nect&api_key=b763bfe1e59fe50ddb8c76103b96437a&format=json"
 artist_search = "http://ws.audioscrobbler.com/2.0/?method=artist.search"
 
+artist_details = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo"
 API_KEY = "b763bfe1e59fe50ddb8c76103b96437a"
 
-PARAM = {"api_key": API_KEY,
-         "format": "json",
-         "limit": "5"}
+PARAM = {"artist": "joji",
+        "api_key": API_KEY,
+         "format": "json"
+         }
 
-query = "Jo"
-
-PARAM["artist"] = query
-
-r = requests.get(url=artist_search, params=PARAM)
+r = requests.get(url=artist_details, params=PARAM)
 
 data = r.json()
 
