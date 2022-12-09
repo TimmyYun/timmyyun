@@ -69,6 +69,7 @@ def getArtist(request, pk):
     """
     try:
         artist = Artist.objects.get(name=pk)
+        artist = Artist.objects.filter(name__iexact=pk)
     except Artist.DoesNotExist:
         artist_search_url = "http://ws.audioscrobbler.com/2.0/?method=artist.search"
         PARAM = {"api_key": API_KEY,
@@ -94,10 +95,26 @@ def getArtist(request, pk):
             return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == "GET":
-        serializer = ArtistSerializer(artist, many=False)
-        breakpoint()
-        if serializer.data['description'] == '':
-            breakpoint()
+        serializer = ArtistSerializer(artist[0], many=False)
+        if serializer.data["description"] is None:
+            artist_details_url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo"
+            PARAM = {"artist": serializer.data["name"],
+                     "api_key": API_KEY,
+                     "format": "json"
+                     }
+            data = requests.get(url=artist_details_url, params=PARAM).json()
+            information = {"name": serializer.data["name"],
+                           "playcount": data["artist"]["stats"]["playcount"],
+                           "description": data["artist"]["bio"]["content"]
+                           }
+
+            genres = [x for x in data["artist"]["tags"]["tag"]["url"]]
+            print(genres)
+            newserializer = ArtistSerializer(
+                instance=artist[0], data=information)
+            if newserializer.is_valid():
+                newserializer.save()
+            return Response(newserializer.data)
         return Response(serializer.data)
 
     if request.method == "PUT":
