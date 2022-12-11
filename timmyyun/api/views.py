@@ -127,24 +127,25 @@ def getArtist(request, pk):
             ids = addArtist(pk)
 
             artist = Artist.objects.filter(name__iexact=pk)
-            artists = Artist.objects.filter(id__in=ids)
 
             if len(artist) == 0:
+                artists = Artist.objects.filter(id__in=ids)
                 artists_serializer = ArtistSerializer(artists, many=True)
                 return Response({"Similar": artists_serializer.data})
 
             artist_serializer = ArtistSerializer(artist[0], many=False)
             ids.remove(artist_serializer.data["id"])
-
+            artists = Artist.objects.filter(id__in=ids)
             if len(ids) == 0:
                 return Response({"Artist": artist_serializer.data})
 
-            artists_serializer = ArtistSerializer(artists, many=True)
         else:
             artist_serializer = ArtistSerializer(artist[0], many=False)
             artist_id = artist_serializer.data["id"]
-            artists = Artist.objects.all().exclude(id=artist_id)
-            artists_serializer = ArtistSerializer(artists, many=True)
+            artists = Artist.objects.filter(
+                name__icontains=pk).exclude(id=artist_id)
+
+        artists_serializer = ArtistSerializer(artists, many=True)
 
         if artist_serializer.data["description"] is None:
             artist_serializer = addDescription(pk)
