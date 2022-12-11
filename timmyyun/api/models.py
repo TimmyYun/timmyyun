@@ -43,15 +43,15 @@ class Education(models.Model):
         db_table = "education"
 
 
-class Skills(models.Model):
-    name = models.CharField(max_length=20, primary_key=True)
+class Skill(models.Model):
+    name = models.CharField(max_length=35, primary_key=True)
 
     class Meta:
-        db_table = "skills"
+        db_table = "skill"
 
 
 class Experience(models.Model):
-    companyName = models.CharField(max_length=50, blank=True)
+    companyName = models.CharField(max_length=100, blank=True)
     website = models.CharField(max_length=50, blank=True)
     title = models.CharField(max_length=50, blank=True)
     employmentType = models.CharField(max_length=50, blank=True)
@@ -79,19 +79,19 @@ class Profile(models.Model):
     location = models.CharField(max_length=50, blank=True)
     socialmedia = models.CharField(max_length=150, blank=True)
     email = models.CharField(max_length=30, blank=True)
-    proneNumber = models.CharField(max_length=30, blank=True)
+    phoneNumber = models.CharField(max_length=30, blank=True)
 
     class Meta:
         db_table = "profile"
 
 
-class Projects(models.Model):
+class Project(models.Model):
     name = models.CharField(max_length=100, blank=True)
     description = models.CharField(max_length=1000, blank=True)
-    skills = models.ManyToManyField(Skills, blank=True)
+    skills = models.ManyToManyField(Skill, blank=True)
 
     class Meta:
-        db_table = "projects"
+        db_table = "project"
 
 
 class Certifications(models.Model):
@@ -115,7 +115,7 @@ class Honors(models.Model):
 
 class Languages(models.Model):
     name = models.CharField(max_length=25, blank=True, primary_key=True)
-    status = models.CharField(max_length=25, blank=True)
+    status = models.CharField(max_length=35, blank=True)
 
     class Meta:
         db_table = "languages"

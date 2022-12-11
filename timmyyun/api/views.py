@@ -169,3 +169,91 @@ def getArtist(request, pk):
     if request.method == "DELETE":
         artist.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+# Profile
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getProfile(request):
+    if request.method == "GET":
+        profile = Profile.objects.all()
+        serializer = ProfileSerializer(profile, many=True)
+        return Response(serializer.data)
+
+# Education
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getEducation(request):
+    if request.method == "GET":
+        education = Education.objects.all()
+        serializer = EducationSerializer(education, many=True)
+        return Response(serializer.data)
+
+# Experience
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getExperience(request):
+    if request.method == "GET":
+        experience = Experience.objects.all()
+        serializer = ExperienceSerializer(experience, many=True)
+        return Response(serializer.data)
+
+# Project
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getProject(request):
+    if request.method == "GET":
+        project = Project.objects.all()
+        serializer = ProjectSerializer(project, many=True)
+        return Response(serializer.data)
+
+# Skill
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getSkill(request):
+    if request.method == "GET":
+        skill = Skill.objects.all()
+        serializer = SkillSerializer(skill, many=True)
+        return Response(serializer.data)
+
+# Certifications
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getCertifications(request):
+    if request.method == "GET":
+        certifications = Certifications.objects.all()
+        serializer = CertificationsSerializer(certifications, many=True)
+        return Response(serializer.data)
+
+# Honors
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getHonors(request):
+    if request.method == "GET":
+        honors = Honors.objects.all()
+        serializer = HonorsSerializer(honors, many=True)
+        return Response(serializer.data)
+
+# Languages
+
+
+@api_view(["GET", "POST"])
+@throttle_classes([UserRateThrottle])
+def getLanguages(request):
+    if request.method == "GET":
+        languages = Languages.objects.all()
+        serializer = LanguagesSerializer(languages, many=True)
+        return Response(serializer.data)
