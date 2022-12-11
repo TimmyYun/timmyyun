@@ -20,3 +20,6 @@ data = r.json()
 
 with open("data.json", "w") as outfile:
     json.dump(data, outfile)
+
+with open('logs/api.txt', 'a') as the_file:
+    the_file.write('Hello\n')

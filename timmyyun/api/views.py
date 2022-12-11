@@ -11,6 +11,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User, Group, Permission
 from api.models import *
 from api.serializers import *
+from api.logging import *
 import requests
 import json
 from rest_framework.response import Response
@@ -26,20 +27,65 @@ API_KEY = "b763bfe1e59fe50ddb8c76103b96437a"
 def getRoutes(request):
     routes = [
         {
-            "diseasetype/",
-            "country/",
-            "disease/",
-            "discover/",
-            "user/",
-            "publicservant/",
-            "doctor/",
-            "specialize/",
-            "record/"
+            "artist/",
         }
     ]
     return Response(routes)
 
+# Description
+
+
+def addDescription(name):
+    artist = Artist.objects.filter(name__iexact=name)[0]
+    artist_details_url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo"
+
+    PARAM = {"artist": name,
+             "api_key": API_KEY,
+             "format": "json"
+             }
+
+    r = requests.get(url=artist_details_url, params=PARAM)
+    log("artist.getinfo", f"{name} {str(r)}")
+    data = r.json()
+
+    information = {"name": name,
+                   "playcount": data["artist"]["stats"]["playcount"],
+                   "description": data["artist"]["bio"]["content"]
+                   }
+
+    serializer = ArtistSerializer(
+        instance=artist, data=information)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return serializer
+
 # Artist
+
+
+def addArtist(name):
+    artist_search_url = "http://ws.audioscrobbler.com/2.0/?method=artist.search"
+    PARAM = {"api_key": API_KEY,
+             "format": "json",
+             "limit": "5",
+             "artist": name}
+    r = requests.get(url=artist_search_url, params=PARAM)
+    log("artist.search", f"{name} {str(r)}")
+    data = r.json()
+    id = []
+    for subject in data["results"]["artistmatches"]["artist"]:
+        information = {"name": subject["name"],
+                       "listeners": subject["listeners"],
+                       "mbid": subject["mbid"],
+                       "url": subject["url"],
+                       "streamable": subject["streamable"],
+                       "image_url": subject["image"][1]["#text"]}
+        serializer = ArtistSerializer(data=information)
+        if serializer.is_valid():
+            serializer.save()
+            id.append(serializer.data["id"])
+    return id
 
 
 @api_view(["GET", "POST"])
@@ -67,55 +113,49 @@ def getArtist(request, pk):
     """
     Retrieve, update or delete an artist.
     """
-    try:
-        artist = Artist.objects.get(name=pk)
-        artist = Artist.objects.filter(name__iexact=pk)
-    except Artist.DoesNotExist:
-        artist_search_url = "http://ws.audioscrobbler.com/2.0/?method=artist.search"
-        PARAM = {"api_key": API_KEY,
-                 "format": "json",
-                 "limit": "5",
-                 "artist": pk}
-        data = requests.get(url=artist_search_url, params=PARAM).json()
-        for subject in data["results"]["artistmatches"]["artist"]:
-            information = {"name": subject["name"],
-                           "listeners": subject["listeners"],
-                           "mbid": subject["mbid"],
-                           "url": subject["url"],
-                           "streamable": subject["streamable"],
-                           "image_url": subject["image"][1]["#text"]}
-            serializer = ArtistSerializer(data=information)
-            if serializer.is_valid():
-                serializer.save()
-        try:
-            artists = Artist.objects.filter(name__icontains=pk)
-            serializer = ArtistSerializer(artists, many=True)
-            return Response(serializer.data)
-        except Artist.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+    pk = pk.replace("-", " ")
+
+    log("getArtist", f"{request.method} {pk}")
+
+    artist = Artist.objects.filter(name__iexact=pk)
 
     if request.method == "GET":
-        serializer = ArtistSerializer(artist[0], many=False)
-        if serializer.data["description"] is None:
-            artist_details_url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo"
-            PARAM = {"artist": serializer.data["name"],
-                     "api_key": API_KEY,
-                     "format": "json"
-                     }
-            data = requests.get(url=artist_details_url, params=PARAM).json()
-            information = {"name": serializer.data["name"],
-                           "playcount": data["artist"]["stats"]["playcount"],
-                           "description": data["artist"]["bio"]["content"]
-                           }
+        """
+        Artist does not exist
+        """
+        if len(artist) == 0:
+            ids = addArtist(pk)
 
-            genres = [x for x in data["artist"]["tags"]["tag"]["url"]]
-            print(genres)
-            newserializer = ArtistSerializer(
-                instance=artist[0], data=information)
-            if newserializer.is_valid():
-                newserializer.save()
-            return Response(newserializer.data)
-        return Response(serializer.data)
+            artist = Artist.objects.filter(name__iexact=pk)
+            artists = Artist.objects.filter(id__in=ids)
+
+            if len(artist) == 0:
+                artists_serializer = ArtistSerializer(artists, many=True)
+                return Response({"Similar": artists_serializer.data})
+
+            artist_serializer = ArtistSerializer(artist[0], many=False)
+            ids.remove(artist_serializer.data["id"])
+
+            if len(ids) == 0:
+                return Response({"Artist": artist_serializer.data})
+
+            artists_serializer = ArtistSerializer(artists, many=True)
+        else:
+            artist_serializer = ArtistSerializer(artist[0], many=False)
+            artist_id = artist_serializer.data["id"]
+            artists = Artist.objects.all().exclude(id=artist_id)
+            artists_serializer = ArtistSerializer(artists, many=True)
+
+        if artist_serializer.data["description"] is None:
+            artist_serializer = addDescription(pk)
+            return Response({
+                "Artist": artist_serializer.data,
+                "Similar": artists_serializer.data
+            })
+        return Response({
+            "Artist": artist_serializer.data,
+            "Similar": artists_serializer.data
+        })
 
     if request.method == "PUT":
         serializer = ArtistSerializer(
