@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProjectsListPage from "./ProjectsListPage";
+
 const ProfilePage = () => {
   let [profile, setProfile] = useState([]);
 
@@ -26,15 +27,21 @@ const ProfilePage = () => {
               <h4></h4> <span>Data Scientist</span>
             </div>
             <ul className="social-icons">
-              <li>
-                <i className="fa fa-linkedin"></i>
-              </li>
-              <li>
-                <i className="fa fa-github"></i>
-              </li>
-              <li>
-                <i className="fa fa-instagram"></i>
-              </li>
+              <a href="https://www.linkedin.com/in/timur-unaspekov-9017261b7/">
+                <li>
+                  <i className="fa fa-linkedin"></i>
+                </li>
+              </a>
+              <a href="https://github.com/TimmyYun">
+                <li>
+                  <i className="fa fa-github"></i>
+                </li>
+              </a>
+              <a href="https://www.instagram.com/singsongkuss/">
+                <li>
+                  <i className="fa fa-instagram"></i>
+                </li>
+              </a>
             </ul>
           </div>
         </div>
