@@ -18,8 +18,8 @@ urlpatterns = [
     path('experience/', views.getExperience, name="Experience"),
 
     # Project
-    path('project/', views.getProject, name="Project"),
-
+    path('project/', views.getProjects, name="Projects"),
+    path('project/<str:pk>/', views.getProject, name="Project"),
     # Skill
     path('skill/', views.getSkill, name="Skill"),
 

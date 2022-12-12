@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -58,8 +59,10 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'timmyyun.urls'
 
@@ -90,8 +93,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '1/second',
-        'user': '1/second'
+        'anon': '10/second',
+        'user': '10/second'
     }
 }
 
@@ -108,7 +111,7 @@ CACHES = {
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 MAX_CONN_AGE = 600
 
-#Amazon POSTGRESQL database
+# Amazon POSTGRESQL database
 
 # DATABASES = {
 #     'default': {
@@ -121,7 +124,7 @@ MAX_CONN_AGE = 600
 #     }
 # }
 
-#Local POSTGRESQL database
+# Local POSTGRESQL database
 
 DATABASES = {
     'default': {

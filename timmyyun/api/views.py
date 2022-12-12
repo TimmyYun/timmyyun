@@ -22,7 +22,6 @@ from rest_framework.views import APIView
 
 API_KEY = "b763bfe1e59fe50ddb8c76103b96437a"
 
-
 @api_view(["GET"])
 def getRoutes(request):
     routes = [
@@ -174,7 +173,6 @@ def getArtist(request, pk):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getProfile(request):
     if request.method == "GET":
         profile = Profile.objects.all()
@@ -185,7 +183,6 @@ def getProfile(request):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getEducation(request):
     if request.method == "GET":
         education = Education.objects.all()
@@ -196,7 +193,6 @@ def getEducation(request):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getExperience(request):
     if request.method == "GET":
         experience = Experience.objects.all()
@@ -207,18 +203,51 @@ def getExperience(request):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
-def getProject(request):
+def getProjects(request):
     if request.method == "GET":
         project = Project.objects.all()
         serializer = ProjectSerializer(project, many=True)
         return Response(serializer.data)
 
+@api_view(['GET', 'PUT', 'DELETE'])
+def getProject(request, pk):
+    """
+    Retrieve, update or delete a project.
+    """
+    try:
+        project = Project.objects.get(id=pk)
+    except Project.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ProjectSerializer(project, many=False)
+        return Response(serializer.data)
+
+    if request.method == 'PUT':
+        serializer = ProjectSerializer(
+            instance=project, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    if request.method == 'DELETE':
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+
+
+
+
 # Skill
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getSkill(request):
     if request.method == "GET":
         skill = Skill.objects.all()
@@ -229,7 +258,6 @@ def getSkill(request):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getCertifications(request):
     if request.method == "GET":
         certifications = Certifications.objects.all()
@@ -240,7 +268,6 @@ def getCertifications(request):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getHonors(request):
     if request.method == "GET":
         honors = Honors.objects.all()
@@ -251,7 +278,6 @@ def getHonors(request):
 
 
 @api_view(["GET", "POST"])
-@throttle_classes([UserRateThrottle])
 def getLanguages(request):
     if request.method == "GET":
         languages = Languages.objects.all()
