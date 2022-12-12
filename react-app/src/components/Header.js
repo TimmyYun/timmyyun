@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="app-header">
-      <h1> Timur Unaspekov</h1>
+      <Link to={"/"}>
+        <h1>Timur Unaspekov</h1>
+      </Link>
     </div>
   );
 };

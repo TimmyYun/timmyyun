@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 
 :root {
-  --color-main: #f68657;
+  --color-main: #ffffff;
   --color-text: #383a3f;
   --color-dark: #1f2124;
   --color-gray: #677;
@@ -11,35 +10,33 @@
   --color-light: #acb4bd;
   --color-lighter: #f9f9f9;
   --color-white: #fff;
-  --color-border:#e0e3e6;
+  --color-border: #e0e3e6;
 }
 
 .dark {
-  --color-main: #f68657;
+  --color-main: #ffffff;
   --color-text: #d6d1d1;
   --color-dark: #f5f6f7;
   --color-gray: #999;
   --color-bg: #1f2124;
   --color-lighter: #292a2c;
   --color-white: #2e3235;
-  --color-border:#252629;
+  --color-border: #252629;
 }
 
 /* BASE STYLES */
 
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lexend', sans-serif;
+  font-family: "Lexend", sans-serif;
   color: inherit;
   font-size: inherit;
   scroll-behavior: smooth;
 }
 
-
-body{
+body {
   line-height: 1.8em;
   font-weight: 400;
   font-size: 16px;
@@ -51,27 +48,24 @@ a {
 
 /* APP STYLES */
 
-
 .container {
   width: 100%;
-  height: 100vh;
+  height: 200vh;
   color: var(--color-text);
   background-color: var(--color-bg);
   display: flex;
   align-items: center;
 }
 
-
 .app {
   width: 100%;
   max-width: 1200px;
-  height: 88vh;
+  height: 90%;
   margin: 0 auto;
   background-color: var(--color-white);
   box-shadow: 1px 1px 6px rgba(212, 18, 18, 0.05);
   position: relative;
 }
-
 
 .app-header {
   display: flex;
@@ -83,6 +77,8 @@ a {
 }
 
 .app-header h1 {
+  position: relative;
+  left: 160%;
   font-size: 30px;
   color: var(--color-dark);
   font-weight: 800;
@@ -106,8 +102,7 @@ a {
   padding: 16px;
 }
 
-
-/* projects STYLES */
+/* Projects STYLES */
 
 .projects-header {
   display: flex;
@@ -128,7 +123,6 @@ a {
   color: var(--color-gray);
 }
 
-
 .projects-list {
   padding: 0;
   margin: 16px 0;
@@ -142,7 +136,7 @@ a {
 }
 
 .projects-list-item {
-  border-bottom: 1px solid  var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   margin-bottom: 12px;
   padding: 8px 16px;
   transition: all 0.2s ease-in-out;
@@ -157,7 +151,6 @@ a {
 .projects-list-item p span {
   font-weight: 600;
 }
-
 
 .projects-list-item p span {
   color: var(--color-gray);
@@ -187,12 +180,9 @@ a {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
 
-
 .floating-button > svg {
   fill: var(--color-bg);
 }
-
-
 
 /*==============================
 =>  Project Styles
@@ -246,4 +236,87 @@ a {
 
 .project textarea::-webkit-scrollbar {
   display: none;
+}
+
+/* Profile STYLES */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35vh;
+  justify-content: space-between;
+  background: var(--color-lighter);
+}
+
+.profile {
+  position: relative;
+  width: 21%;
+  height: 100%;
+  background: url("https://i.imgur.com/ew0MSGa.jpeg");
+  background-size: cover;
+  cursor: pointer;
+  border: 12px;
+  border-top-right-radius: 35px !important;
+  border-radius: 6px;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 1s;
+  border-top-right-radius: 35px !important;
+  border-radius: 6px;
+}
+
+.profile:hover .overlay {
+  opacity: 1;
+}
+
+.social-icons {
+  display: flex;
+  list-style: none;
+  bottom: 10px;
+  position: absolute;
+  text-align: center;
+  justify-content: space-between;
+  left: 20%;
+}
+
+.social-icons li {
+  width: 25px;
+  height: 25px;
+  border: 1px solid #eee;
+  padding: 20px;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 1s;
+}
+
+.social-icons li:hover {
+  background: #fff;
+  color: #000;
+}
+
+.overlay .about {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  top: 40%;
+  color: #fff;
+  flex: column;
+}
+
+.profile-information {
+  color: var(--color-main);
+  font-size: 24px;
+  font-weight: 600;
 }
