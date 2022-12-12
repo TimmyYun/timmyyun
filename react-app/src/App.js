@@ -8,16 +8,16 @@ import ProjectPage from "./pages/ProjectPage";
 function App() {
   return (
     <Router>
-      <div className="container dark">
-        <div className="app">
-          <Header />
+      {/* <div className="container dark">
+        <div className="app"> */}
+          {/* <Header /> */}
           <Routes>
             <Route path="/" exact element={<ProfilePage />} />
             <Route path="/project" exact element={<ProjectsListPage />} />
             <Route path="/project/:projectId" element={<ProjectPage />} />
           </Routes>
-        </div>
-      </div>
+        {/* </div>
+      </div> */}
     </Router>
   );
 }
