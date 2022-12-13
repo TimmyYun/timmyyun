@@ -11,3 +11,6 @@ DROP TABLE django_content_type;
 DROP TABLE django_migrations;
 DROP TABLE django_session;
 DROP TABLE my_cache_table;
+
+DROP SCHEMA public CASCADE;
+CREATE SCHEMA public;

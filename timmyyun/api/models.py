@@ -68,6 +68,7 @@ class Experience(models.Model):
 
 
 class Profile(models.Model):
+    age = models.IntegerField(blank=True)
     name = models.CharField(max_length=100, blank=True)
     surname = models.CharField(max_length=100, blank=True)
     title = models.CharField(max_length=100, blank=True)

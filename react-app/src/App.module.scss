@@ -1,0 +1,28 @@
+.header {
+  @apply flex items-center justify-between text-white;
+
+  .mainpage {
+    @apply border border-slate-800 rounded-lg m-8 p-4 text-lg;
+  }
+
+  .nav {
+    @apply flex m-4;
+
+    .item {
+      @apply mr-4 p-2;
+    }
+  }
+}
+
+.section {
+  @apply flex items-center h-96 mx-48 my-12 rounded-lg shadow-lg shadow-slate-600 hover:shadow-2xl hover:shadow-slate-900    duration-300;
+  .background {
+    @apply flex bg-header_background bg-cover justify-center bg-center h-full w-full;
+    .profile {
+      @apply h-2/3 border rounded-lg my-8;
+    }
+    .profile_text {
+      @apply mr-4;
+    }
+  }
+}
