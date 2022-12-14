@@ -6,6 +6,12 @@ module.exports = {
       backgroundImage: {
         header_background: "url('images/header-background.jpg')",
       },
+      spacing: {
+        '124': '124px',
+        '128': '32rem',
+        '169': '169px',
+        '256': '64rem',
+      }
     },
   },
   plugins: [],
