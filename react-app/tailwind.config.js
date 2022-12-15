@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         header_background: "url('images/header-background.jpg')",
+        main_background: "url('assets/asset_1.png')",
       },
       spacing: {
         '124': '124px',

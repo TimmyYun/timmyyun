@@ -67,7 +67,11 @@ const ProfilePage = () => {
                 data-aos="fade-right"
                 data-aos-delay="700"
               >
-                Download CV
+                <span className="flex h-3 w-3">
+                  <span className="animate-ping absolute h-3 w-3 rounded-full bg-sky-400 opacity-75 left-0 top-0 "></span>
+                  <span className="absolute rounded-full h-3 w-3 bg-sky-500 left-0 top-0"></span>
+                </span>
+                <div className="absolute">Download CV</div>
               </a>
               <a
                 className={styles.profile_links_item}
@@ -81,17 +85,31 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      {/* 
-                      <div className="d-print-none">
-                        
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div className={styles.about_me}>
+        <div className={styles.about_me_section}>
+          <div className={styles.about_me_section_header}> About me </div>
+          <div className={styles.about_me_section_main}>
+            {profile.description} AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+          </div>
+        </div>
+        <div className={styles.about_me_section}>
+          <div className={styles.about_me_section_header}> Bio </div>
+          <div className={styles.about_me_section_main}>
+            <div className={styles.about_me_section_main_f}>
+              <div className={styles.about_me_section_main_item}>Age </div>
+              <div className={styles.about_me_section_main_item}>Email </div>
+              <div className={styles.about_me_section_main_item}>Phone </div>
+              <div className={styles.about_me_section_main_item}>Phone </div>
+            </div>
+            <div className={styles.about_me_section_main_s}>
+              <div className={styles.about_me_section_main_item}>{profile.age}</div>
+              <div className={styles.about_me_section_main_item}>{profile.email}</div>
+              <div className={styles.about_me_section_main_item}>{profile.phoneNumber}</div>
+              <div className={styles.about_me_section_main_item}>{profile.location}</div>
             </div>
           </div>
-  </div> */}
+        </div>
+      </div>
     </div>
   );
 };
