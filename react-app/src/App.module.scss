@@ -1,30 +1,14 @@
-.header {
-  @apply w-auto max-w-full p-0 min-w-fit h-fit mx-48 flex flex-row flex-auto items-center my-8 justify-between;
-
-  .mainpage {
-    @apply self-auto flex w-28 border  rounded-lg p-4 text-base text-white;
-  }
-
-  .nav {
-    @apply self-auto flex flex-wrap items-center justify-center border;
-
-    .item {
-      @apply flex mr-2 p-1 border;
-    }
-  }
-}
-
 .section {
-  @apply flex h-128 min-w-fit mx-48 my-12 rounded-3xl bg-header_background bg-no-repeat bg-center bg-cover shadow-lg shadow-slate-600 hover:shadow-2xl hover:shadow-slate-900 duration-300;
+  @apply flex h-128 min-w-fit mx-48 my-12 rounded-3xl bg-header_background bg-no-repeat bg-center bg-cover shadow-lg shadow-slate-700 hover:shadow-2xl hover:shadow-slate-700 duration-300;
   .overlay {
     @apply flex flex-col items-center justify-center w-full h-full;
     .profile_image {
-      @apply object-contain h-169 w-124 shadow-2xl shadow-slate-900;
+      @apply object-contain border border-slate-900 rounded-xl h-169 w-124 shadow-2xl shadow-slate-900;
     }
     .profile_text_container {
       @apply flex flex-col h-1/6 w-72 items-center justify-center;
       .profile_text {
-        @apply text-2xl h-1/3 w-full text-center text-white;
+        @apply text-2xl h-1/3 w-full text-center text-white font-semibold;
       }
       .profile_nav {
         @apply flex flex-row h-1/2 w-1/2;
@@ -35,7 +19,7 @@
       .profile_links {
         @apply flex flex-row h-full w-full items-center;
         .profile_links_item {
-          @apply flex relative h-1/2 w-1/2 mx-1 items-center rounded-3xl bg-gradient-to-r from-green-400 to-blue-600 hover:from-green-500 hover:to-blue-700 justify-center duration-500;
+          @apply flex relative h-1/2 w-1/2 mx-1 items-center rounded-3xl bg-gradient-to-r from-zinc-600 to-indigo-700 hover:from-zinc-500 hover:to-indigo-600 justify-center duration-500 text-white font-semibold;
         }
       }
     }
@@ -62,6 +46,50 @@
         .about_me_section_main_item {
           @apply flex border w-full h-1/4;
         }
+      }
+    }
+  }
+}
+.profile {
+  @apply flex flex-col h-full w-full items-center bg-white rounded-lg shadow-lg shadow-slate-600 hover:shadow-2xl hover:shadow-slate-900 duration-300;
+
+  .profile_header {
+    @apply flex flex-col items-center justify-center h-1/3 w-full bg-gradient-to-r from-green-400 to-blue-600 rounded-t-lg;
+    .profile_image {
+      @apply object-contain border border-slate-900 rounded-xl h-128 w-128 shadow-2xl shadow-slate-900;
+    }
+    .profile_name {
+      @apply text-2xl text-white mb-2;
+    }
+    .profile_title {
+      @apply text-xl text-white;
+    }
+  }
+
+  .profile_body {
+    @apply flex flex-col items-center justify-center h-2/3 w-full bg-white;
+    .profile_links {
+      @apply flex flex-row h-1/4 w-full justify-center;
+      .profile_links_item {
+        @apply flex relative h-full w-1/2 mx-1 items-center justify-center duration-500;
+        .profile_links_item_icon {
+          @apply m-3;
+        }
+        .profile_links_item_text {
+          @apply font-bold text-sm;
+        }
+      }
+      .profile_links_item:hover {
+        @apply bg-green-400 text-white;
+      }
+    }
+    .profile_about {
+      @apply flex flex-col h-3/4 w-full px-10 py-5 text-sm;
+      .profile_about_title {
+        @apply font-bold text-lg mb-2;
+      }
+      .profile_about_text {
+        @apply mb-2;
       }
     }
   }

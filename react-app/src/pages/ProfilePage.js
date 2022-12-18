@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ProjectsListPage from "./ProjectsListPage";
 import ReactDOM from "react-dom";
-import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
+import {
+  FaGithub,
+  FaInstagram,
+  FaLinkedin,
+  FaEnvelope,
+  FaCalendarAlt,
+  FaSkype,
+  FaPhone,
+} from "react-icons/fa";
 
 import profile_pictire from "../images/profile.jpg";
 import styles from "../App.module.scss";
@@ -38,7 +46,7 @@ const ProfilePage = () => {
             <div className={styles.profile_nav}>
               <div className={styles.profile_nav_item}>
                 <a href="https://github.com/TimmyYun" title="Github">
-                  <FaGithub size="2x" href="https:twitter.com/templateflip" />
+                  <FaGithub size="2x" />
                 </a>
               </div>
               <div className={styles.profile_nav_item}>
@@ -71,7 +79,7 @@ const ProfilePage = () => {
                   <span className="animate-ping absolute h-3 w-3 rounded-full bg-sky-400 opacity-75 left-0 top-0 "></span>
                   <span className="absolute rounded-full h-3 w-3 bg-sky-500 left-0 top-0"></span>
                 </span>
-                <div className="absolute">Download CV</div>
+                <div className="absolute font-semibold">Download CV</div>
               </a>
               <a
                 className={styles.profile_links_item}
@@ -85,31 +93,63 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className={styles.about_me}>
-        <div className={styles.about_me_section}>
-          <div className={styles.about_me_section_header}> About me </div>
-          <div className={styles.about_me_section_main}>
-            {profile.description} AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-          </div>
-        </div>
-        <div className={styles.about_me_section}>
-          <div className={styles.about_me_section_header}> Bio </div>
-          <div className={styles.about_me_section_main}>
-            <div className={styles.about_me_section_main_f}>
-              <div className={styles.about_me_section_main_item}>Age </div>
-              <div className={styles.about_me_section_main_item}>Email </div>
-              <div className={styles.about_me_section_main_item}>Phone </div>
-              <div className={styles.about_me_section_main_item}>Phone </div>
+      <div className="flex h-128 min-w-fit mx-48 my-12 rounded-3xl shadow-lg shadow-slate-700 hover:shadow-2xl hover:shadow-slate-700 duration-300">
+        <div className="shadow-1-strong bg-white rounded-3xl" id="about">
+          <div className="flex flex-row">
+            <div className="w-1/2 p-12 font-light text-lg">
+              <h2 className="text-4xl mb-8">About Me</h2>
+              <p>
+                Hello! I’m Timur Unaspekov. I am passionate about memes. I am a
+                skilled <strong>data scientist and back-end developer</strong>{" "}
+                and master of memes. I am a quick learner and a team worker that
+                gets the job done.
+              </p>
+              <p>
+                I can easily capitalize on low hanging fruits and quickly
+                maximize timely deliverables for real-time schemas.
+              </p>
             </div>
-            <div className={styles.about_me_section_main_s}>
-              <div className={styles.about_me_section_main_item}>{profile.age}</div>
-              <div className={styles.about_me_section_main_item}>{profile.email}</div>
-              <div className={styles.about_me_section_main_item}>{profile.phoneNumber}</div>
-              <div className={styles.about_me_section_main_item}>{profile.location}</div>
+            <div className="w-1/2 p-12 font-light text-lg">
+              <div className="flex flex-col">
+                <h2 className="text-4xl mb-8">Bio</h2>
+                <div className="flex flex-row my-2">
+                  <div className="w-1/2">
+                    <strong>Age</strong>
+                  </div>
+                  <div className="w-1/2">
+                    <div>{profile.age}</div>
+                  </div>
+                </div>
+                <div className="flex flex-row my-2">
+                  <strong className="w-1/2">Email</strong>
+                  <div className="w-1/2">
+                    <div>{profile.email}</div>
+                  </div>
+                </div>
+                <div className="flex flex-row my-2">
+                  <strong className="w-1/2">Discord</strong>
+                  <div className="w-1/2">
+                    <div>singsongkuss</div>
+                  </div>
+                </div>
+                <div className="flex flex-row my-2">
+                  <strong className="w-1/2">Phone</strong>
+                  <div className="w-1/2">
+                    <div>{profile.phoneNumber}</div>
+                  </div>
+                </div>
+                <div className="flex flex-row my-2">
+                  <strong className="w-1/2">Location</strong>
+                  <div className="w-1/2">
+                    <div>{profile.location}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <ProjectsListPage />
     </div>
   );
 };
