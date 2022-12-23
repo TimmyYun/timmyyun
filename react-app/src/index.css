@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bank+Gothic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 body {
   @apply bg-gradient-to-r from-zinc-800 to-indigo-900;

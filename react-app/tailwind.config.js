@@ -7,6 +7,7 @@ module.exports = {
         'bankgothic': ['Bank Gothic', 'sans-serif'],
         'poppins': ['Poppins', 'sans-serif'],
         'orbitron': ['Orbitron', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
       },
       backgroundImage: {
         header_background: "url('images/header-background.jpg')",
@@ -15,6 +16,7 @@ module.exports = {
       spacing: {
         '124': '124px',
         '128': '32rem',
+        '168': '168px',
         '169': '169px',
         '256': '64rem',
       }

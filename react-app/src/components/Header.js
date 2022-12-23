@@ -4,7 +4,7 @@ import styles from "../App.module.scss";
 import { FaInstagram } from "react-icons/fa";
 const Header = () => {
   return (
-    <header className="w-auto max-w-full p-0 min-w-fit h-fit mx-48 flex flex-row flex-auto items-center my-8 justify-between">
+    <header className="w-auto max-w-full p-0 min-w-fit h-fit mx-72 flex flex-row flex-auto items-center my-8 justify-between font-inter">
       
       <div className="self-auto flex w-28 rounded-lg text-base text-white">
         <Link
@@ -77,7 +77,7 @@ const Header = () => {
         </Link>
       </div>
       <div className="relative hidden lg:flex items-center ml-auto">
-        <nav className="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
+        <nav className="text-sm leading-6 text-slate-700 dark:text-slate-200">
           <ul className="flex space-x-8">
             <li>
               <a

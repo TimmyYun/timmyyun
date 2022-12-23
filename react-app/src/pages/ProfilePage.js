@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import ProjectsListPage from "./ProjectsListPage";
 import ReactDOM from "react-dom";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   FaGithub,
   FaInstagram,
@@ -18,6 +20,7 @@ const ProfilePage = () => {
   let [profile, setProfile] = useState([]);
 
   useEffect(() => {
+    AOS.init();
     getProfile();
   }, []);
 
@@ -36,13 +39,21 @@ const ProfilePage = () => {
             className={styles.profile_image}
             alt="profile_picture"
           />
-          <div className={styles.profile_text_container}>
+          <div
+            className={styles.profile_text_container}
+            data-aos="zoom-in"
+            data-aos-delay="0"
+          >
             <div className={styles.profile_text}>
               {profile.name} {profile.surname}
             </div>
             <div className={styles.profile_text}>{profile.title}</div>
           </div>
-          <div className={styles.profile_text_container}>
+          <div
+            className={styles.profile_text_container}
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
             <div className={styles.profile_nav}>
               <div className={styles.profile_nav_item}>
                 <a href="https://github.com/TimmyYun" title="Github">
@@ -75,12 +86,13 @@ const ProfilePage = () => {
                 data-aos="fade-right"
                 data-aos-delay="700"
               >
-                <span className="flex h-3 w-3">
-                  <span className="animate-ping absolute h-3 w-3 rounded-full bg-sky-400 opacity-75 left-0 top-0 "></span>
-                  <span className="absolute rounded-full h-3 w-3 bg-sky-500 left-0 top-0"></span>
+                <span className={styles.animatedping}>
+                  <span className={styles.dot}></span>
+                  <span className={styles.ping}></span>
                 </span>
-                <div className="absolute font-semibold">Download CV</div>
+                <div className="absolute">Download CV</div>
               </a>
+
               <a
                 className={styles.profile_links_item}
                 href="#contact"
@@ -93,16 +105,19 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="flex h-96 min-w-fit mx-96 my-12  shadow-lg shadow-slate-700 hover:shadow-2xl hover:shadow-slate-600 duration-300">
-        <div className="shadow-1-strong bg-white " id="about">
-          <div className="flex flex-row font-poppins">
+      <div className="flex h-96 min-w-fit mx-72 my-12  shadow-lg shadow-slate-700 hover:shadow-2xl hover:shadow-slate-600 duration-300">
+        <div className="flex shadow-1-strong bg-white " id="about">
+          <div className="flex flex-row font-inter">
             <div className="w-1/2 p-12 font-light text-lg">
               <h2 className="text-4xl mb-8">About Me</h2>
               <p>
                 Hello! I’m Timur Unaspekov. I am passionate about memes. I am a
                 skilled
-                <strong className="font-extrabold"> data scientist and back-end developer</strong> and
-                master of memes. I am a quick learner and a team worker that
+                <strong className="font-extrabold">
+                  {" "}
+                  data scientist and back-end developer
+                </strong>{" "}
+                and master of memes. I am a quick learner and a team worker that
                 gets the job done.
               </p>
               <p>
@@ -110,9 +125,9 @@ const ProfilePage = () => {
                 maximize timely deliverables for real-time schemas.
               </p>
             </div>
-            <div className="w-1/2 p-12 font-light text-lg">
+            <div className="flex w-1/2 p-12 font-light text-lg">
               <div className="flex flex-col">
-                <h2 className="text-4xl mb-8">Bio</h2>
+                <h2 className="flex text-4xl mb-8">Bio</h2>
                 <div className="flex flex-row my-2">
                   <div className="w-28">
                     <strong>Age</strong>
@@ -150,7 +165,6 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <ProjectsListPage />
     </div>
   );
 };
