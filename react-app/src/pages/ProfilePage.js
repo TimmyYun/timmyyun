@@ -93,15 +93,16 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className="flex h-128 min-w-fit mx-48 my-12 rounded-3xl shadow-lg shadow-slate-700 hover:shadow-2xl hover:shadow-slate-700 duration-300">
-        <div className="shadow-1-strong bg-white rounded-3xl" id="about">
-          <div className="flex flex-row">
+      <div className="flex h-96 min-w-fit mx-96 my-12  shadow-lg shadow-slate-700 hover:shadow-2xl hover:shadow-slate-600 duration-300">
+        <div className="shadow-1-strong bg-white " id="about">
+          <div className="flex flex-row font-poppins">
             <div className="w-1/2 p-12 font-light text-lg">
               <h2 className="text-4xl mb-8">About Me</h2>
               <p>
                 Hello! I’m Timur Unaspekov. I am passionate about memes. I am a
-                skilled <strong>data scientist and back-end developer</strong>{" "}
-                and master of memes. I am a quick learner and a team worker that
+                skilled
+                <strong className="font-extrabold"> data scientist and back-end developer</strong> and
+                master of memes. I am a quick learner and a team worker that
                 gets the job done.
               </p>
               <p>
@@ -113,7 +114,7 @@ const ProfilePage = () => {
               <div className="flex flex-col">
                 <h2 className="text-4xl mb-8">Bio</h2>
                 <div className="flex flex-row my-2">
-                  <div className="w-1/2">
+                  <div className="w-28">
                     <strong>Age</strong>
                   </div>
                   <div className="w-1/2">
@@ -121,25 +122,25 @@ const ProfilePage = () => {
                   </div>
                 </div>
                 <div className="flex flex-row my-2">
-                  <strong className="w-1/2">Email</strong>
+                  <strong className="w-28">Email</strong>
                   <div className="w-1/2">
                     <div>{profile.email}</div>
                   </div>
                 </div>
                 <div className="flex flex-row my-2">
-                  <strong className="w-1/2">Discord</strong>
+                  <strong className="w-28">Discord</strong>
                   <div className="w-1/2">
                     <div>singsongkuss</div>
                   </div>
                 </div>
                 <div className="flex flex-row my-2">
-                  <strong className="w-1/2">Phone</strong>
+                  <strong className="w-28">Phone</strong>
                   <div className="w-1/2">
                     <div>{profile.phoneNumber}</div>
                   </div>
                 </div>
                 <div className="flex flex-row my-2">
-                  <strong className="w-1/2">Location</strong>
+                  <strong className="w-28">Location</strong>
                   <div className="w-1/2">
                     <div>{profile.location}</div>
                   </div>

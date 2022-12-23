@@ -3,6 +3,11 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        'bankgothic': ['Bank Gothic', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+        'orbitron': ['Orbitron', 'sans-serif'],
+      },
       backgroundImage: {
         header_background: "url('images/header-background.jpg')",
         main_background: "url('assets/asset_1.png')",

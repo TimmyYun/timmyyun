@@ -5,10 +5,11 @@ import { FaInstagram } from "react-icons/fa";
 const Header = () => {
   return (
     <header className="w-auto max-w-full p-0 min-w-fit h-fit mx-48 flex flex-row flex-auto items-center my-8 justify-between">
+      
       <div className="self-auto flex w-28 rounded-lg text-base text-white">
         <Link
           to={"/"}
-          className="w-2/3 text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400"
+          className="w-3/6 text-slate-700 dark:text-slate-200 hover:text-sky-500 dark:hover:text-sky-400"
         >
           <svg
             version="1.1"
