@@ -82,22 +82,23 @@ const Header = () => {
             <li>
               <a
                 className="hover:text-sky-500 dark:hover:text-sky-400"
-                href="/docs/installation"
+                href="/about"
               >
                 About
               </a>
             </li>
             <li>
               <a
-                href="https://tailwindui.com/?ref=top"
+                href="/skills"
                 className="hover:text-sky-500 dark:hover:text-sky-400"
+                
               >
                 Skills
               </a>
             </li>
             <li>
               <a
-                href="https://tailwindui.com/?ref=top"
+                href="/experience"
                 className="hover:text-sky-500 dark:hover:text-sky-400"
               >
                 Experience
@@ -105,7 +106,7 @@ const Header = () => {
             </li>
             <li>
               <a
-                href="https://tailwindui.com/?ref=top"
+                href="/education"
                 className="hover:text-sky-500 dark:hover:text-sky-400"
               >
                 Education

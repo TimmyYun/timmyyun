@@ -69,7 +69,7 @@ ROOT_URLCONF = 'timmyyun.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,29 +113,29 @@ MAX_CONN_AGE = 600
 
 # Amazon POSTGRESQL database
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'dbf5530rer4nus',
-#         'USER': 'lmwendgctpyyei',
-#         'PASSWORD': '80c3dec5f1f1337c3b25cb8790dbb2814bfebde1886c48707aee1a6fecf8e0fb',
-#         'HOST': 'ec2-54-174-31-7.compute-1.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
-# Local POSTGRESQL database
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dev',
-        'USER': 'postgres',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
+        'NAME': 'd9804pfpknptpu',
+        'USER': 'zvscpjuskcsnhp',
+        'PASSWORD': '9270ed7f74f6d58eb878c15fcaa1af5aa31b8b45dcf12a98cc45962df7054aa8',
+        'HOST': 'ec2-3-209-124-113.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
+
+# Local POSTGRESQL database
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dev',
+#         'USER': 'postgres',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -174,8 +174,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / "staticfiles"
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'build/static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Enable WhiteNoise's GZip compression of static assets.
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -201,3 +206,6 @@ if "CI" in os.environ:
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import django_heroku
+django_heroku.settings(locals())

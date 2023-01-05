@@ -4,6 +4,10 @@ import Header from "./components/Header";
 import ProfilePage from "./pages/ProfilePage";
 import ProjectsListPage from "./pages/ProjectsListPage";
 import ProjectPage from "./pages/ProjectPage";
+import axios from 'axios';
+
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 function App() {
   return (
