@@ -181,7 +181,8 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'react-app/build/static'
+    os.path.join(BASE_DIR, 'react-app/build/static'),
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # Enable WhiteNoise's GZip compression of static assets.
