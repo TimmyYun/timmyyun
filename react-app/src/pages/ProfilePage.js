@@ -25,7 +25,7 @@ const ProfilePage = () => {
   }, []);
 
   const getProfile = async () => {
-    let profile_response = await fetch("http://127.0.0.1:8000/api/profile/");
+    let profile_response = await fetch("https://timmyyunheroku.herokuapp.com/api/profile/");
     let profile_data = await profile_response.json();
     setProfile(profile_data[0]);
   };

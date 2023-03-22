@@ -10,7 +10,7 @@ const ProjectPage = () => {
   }, [projectId]);
 
   let getProject = async () => {
-    let response = await fetch(`http://127.0.0.1:8000/project/${projectId}/`);
+    let response = await fetch(`https://timmyyunheroku.herokuapp.com/project/${projectId}/`);
     let data = await response.json();
     setProject(data);
   };
