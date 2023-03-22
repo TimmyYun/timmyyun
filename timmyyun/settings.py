@@ -26,6 +26,8 @@ IS_HEROKU = "DYNO" in os.environ
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-iv*$xi2o^@5)-r0@0)-gpv=asf0j1n*ktu^i&58tz)&w@bkh2*'
 
+if 'SECRET_KEY' in os.environ:
+    SECRET_KEY = os.environ["SECRET_KEY"]
 
 if IS_HEROKU:
     ALLOWED_HOSTS = ["*"]
@@ -173,12 +175,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = BASE_DIR / "staticfiles/"
+STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'react-app/build/static')
+    BASE_DIR / 'react-app/build/static/'
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

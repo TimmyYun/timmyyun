@@ -1,5 +1,5 @@
-python .\timmyyun\manage.py makemigrations api
-python .\timmyyun\manage.py migrate api
-python .\timmyyun\manage.py makemigrations
-python .\timmyyun\manage.py migrate
-python .\timmyyun\manage.py createcachetable
+python manage.py makemigrations api
+python manage.py migrate api
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createcachetable
