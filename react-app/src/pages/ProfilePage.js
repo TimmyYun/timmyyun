@@ -111,16 +111,7 @@ const ProfilePage = () => {
             <div className="w-1/2 p-12 font-light text-lg">
               <h2 className="text-4xl mb-8">About Me</h2>
               <p>
-              Introducing myself, I am a skilled data scientist and software engineer with experience working for various organizations in Kazakhstan and the United States. Currently, I am a part-time research assistant at the Institute of Smart Systems and Artificial Intelligence at Nazarbayev University in Nur-Sultan, where I have demonstrated my expertise in high-performance computing, deep learning, PyTorch, and Python programming. I have successfully increased model accuracy by 370%, developed thermal image processing and person verification models, and conducted research with encoder architectures and transformers.
-
-              I also have experience working as a software engineer at TAS Group, where I designed and developed software for data analytics visualization and processing. I leveraged my programming expertise to create responsive user interfaces, and utilized advanced technologies such as C#, .NET Framework, React.js, and SQL to deliver high-quality results to clients.
-
-              Furthermore, I have experience working as a data scientist, where I applied advanced statistical and machine learning techniques to develop accurate client clustering and scoring systems. I have a proven track record of conducting in-depth data analytics, identifying trends, patterns, and valuable insights, and communicating my findings in a clear and concise manner to drive meaningful results.
-
-              Additionally, I am the President of DataSci, a student organization that organizes and promotes Data Science events with a team of student volunteers. I secured funding and sponsorships, developed a growth strategy for the club, and increased engagement and knowledge-sharing among members and industry professionals. My skills in team management and leadership have been critical to the club's success.
-
-              In summary, I am a highly motivated and skilled professional with expertise in data science, software engineering, and team management. My technical skills, problem-solving abilities, and dedication to delivering high-quality results make me an asset to any organization.
-              </p>
+              I'm a skilled data scientist and software engineer experienced in high-performance computing, deep learning, PyTorch, and Python programming. I've developed thermal image processing and person verification models and conducted research with encoder architectures and transformers. I've also worked as a software engineer and data scientist, applying advanced statistical and machine learning techniques to develop accurate client clustering and scoring systems. Additionally, I'm the President of DataSci, a student organization that organizes and promotes Data Science events.              </p>
             </div>
             <div className="flex w-1/2 p-12 font-light text-lg">
               <div className="flex flex-col">
